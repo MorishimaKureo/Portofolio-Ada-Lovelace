@@ -102,4 +102,8 @@ body{
   filter: blur(10px);
 }
 
+.head.img{
+  margin: 0;
+  background-image: url("ada-header.jpg");
 
+}
