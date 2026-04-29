@@ -6,6 +6,10 @@
   --sidebar-shadow: 18px 0 40px rgba(0, 0, 0, 0.28);
 }
 
+html{
+  scroll-behaviour: smooth;
+}
+
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -217,8 +221,9 @@ body {
 }
 
 .about.on-about p{
-  flex: 1;
+  flex: 1 1 720px;
   margin-left: 0;
+  width: 100%;
   max-width: 720px;
 }
 
@@ -226,9 +231,13 @@ body {
   border: 0;
   border-radius: 10px;
   margin-left: 0px;
+  max-width: 100%;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 20px;
-  transition: margin-left 1s ease;
+  transition:
+    margin-left 1s ease,
+    width 1s ease,
+    max-width 1s ease;
   font-size: 1.7rem;
 }
 
