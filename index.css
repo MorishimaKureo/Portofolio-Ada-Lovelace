@@ -6,8 +6,10 @@
   --sidebar-shadow: 18px 0 40px rgba(0, 0, 0, 0.28);
 }
 
-body{
+body {
+  margin: 0;
   font-family: "Poppins", sans-serif;
+  background-color: #f4f7f6;
 }
 
 * {
@@ -25,9 +27,7 @@ body{
   border-radius: 14px;
   background: var(--sidebar-bg);
   color: var(--sidebar-text);
-  font-family: "Poppins", sans-serif;
   font-size: 1.35rem;
-  line-height: 1;
   cursor: pointer;
   box-shadow: var(--sidebar-shadow);
   transition: transform 0.2s ease, background 0.2s ease;
@@ -36,12 +36,6 @@ body{
 .menu-toggle:hover {
   transform: scale(1.05);
   background: rgba(13, 27, 42, 1);
-  box-shadow: 0 0 15px rgba(60, 223, 252, 0.554), 0 0 30px rgb(2, 2, 122);
-}
-
-.menu-toggle:focus-visible {
-  outline: 3px solid var(--sidebar-accent);
-  outline-offset: 3px;
 }
 
 .sidebar {
@@ -54,7 +48,6 @@ body{
   padding: 88px 24px 24px;
   background: linear-gradient(180deg, rgba(13, 27, 42, 0.98), rgba(8, 18, 28, 0.96));
   color: var(--sidebar-text);
-  font-family: "Poppins", sans-serif;
   box-shadow: var(--sidebar-shadow);
   transform: translateX(-100%);
   transition: transform 0.28s ease;
@@ -65,45 +58,189 @@ body{
   transform: translateX(0);
 }
 
-.sidebar h1 {
-  margin: 0 0 20px;
-  font-size: 1.6rem;
-  line-height: 1.2;
-}
-
-.sidebar ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.sidebar li + li {
-  margin-top: 10px;
-}
-
+.sidebar h1 { margin: 0 0 20px; font-size: 1.6rem; }
+.sidebar ul { margin: 0; padding: 0; list-style: none; }
+.sidebar li + li { margin-top: 10px; }
 .sidebar a {
   display: block;
   padding: 12px 14px;
   border-radius: 12px;
   color: var(--sidebar-text);
   text-decoration: none;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: all 0.2s ease;
 }
-
-.sidebar a:hover,
-.sidebar a:focus-visible {
+.sidebar a:hover {
   background: rgba(142, 197, 255, 0.15);
   transform: translateX(4px);
-  outline: none;
-  box-shadow: 0 0 15px rgb(15, 249, 222), 0 0 30px rgb(44, 213, 255);
+}
+.content {
+  transition: filter 0.3s ease;
 }
 
-.content.is-blur{
+.content.is-blur {
   filter: blur(10px);
 }
 
-.head.img{
-  margin: 0;
-  background-image: url("ada-header.jpg");
+.head img{
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  background-attachment: fixed;
+}
 
+.head {
+  position: relative;
+}
+
+.profile-picture {
+  padding-top: 100px;
+  position: absolute;
+  top: 200px;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 900;
+  transition:
+    top 1s ease,
+    right 1s ease,
+    bottom 1s ease,
+    left 1s ease,
+    position 1s ease,
+    transform 1s ease;
+}
+
+.profile-picture img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid white;
+  transition:
+    width 1s ease,
+    height 1s ease,
+    border-width 1s ease,
+    flex-direction 1s ease,
+    position 1s ease,
+    top 1s ease,
+    right 1s ease;
+}
+
+.profile-picture a{
+  font-size: 50px;
+  font-family:"Dancing Script", cursive;
+  display: block;
+  transition: font-size 1s ease;
+}
+
+.profile-picture.is-scrolled{
+  position: fixed;
+  padding-top: 0px;
+  top: 18px;
+  right: 18px;
+
+  left: auto;
+  bottom: auto;
+  transform: none;
+
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 12px;
+
+  text-align: right;
+  z-index: 1000;
+}
+
+.profile-picture.on-about{
+  position: static;
+  padding-top: 0;
+  transform: none;
+  display: block;
+  flex: 0 0 220px;
+  text-align: center;
+  z-index: auto;
+}
+
+.profile-picture.on-about img{
+  width: 200px;
+  height: 200px;
+  border-width: 4px;
+  position: relative;
+  top: 0;
+  right: 0;
+}
+
+.profile-picture.on-about a{
+  font-size: 30px;
+  font-family:"Dancing Script", cursive;
+  display: block;
+  transition: font-size 1s ease;
+}
+
+.profile-picture.is-scrolled img{
+  width: 64px;
+  height: 64px;
+  border-width: 3px;
+}
+
+.profile-picture.is-scrolled a{
+  font-size: 28px;
+  white-space: nowrap;
+}
+
+.about {
+  margin-top: 220px;
+  margin-left: 0;
+  margin-bottom: 200px;
+  transition: margin-top 1s ease, filter 1s ease;
+  filter:blur(5px);
+}
+
+.about.on-about{
+  margin-top: 10px;
+  filter:blur(0px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 0 32px;
+}
+
+.about.on-about p{
+  margin-left: 0;
+  max-width: 720px;
+}
+
+.about p{
+  border: 0;
+  border-radius: 10px;
+  margin-left: 0px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  transition: margin-left 1s ease;
+  font-size: 1.7rem;
+}
+
+@media (max-width: 760px) {
+  .about.on-about {
+    flex-direction: column;
+    padding: 0 18px;
+  }
+
+  .profile-picture.on-about {
+    flex-basis: auto;
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 40px;
+  background: #0d1b2a;
+  color: white;
+}
+
+footer a {
+  color: var(--sidebar-accent);
+  text-decoration: none;
 }
