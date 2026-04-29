@@ -45,8 +45,10 @@ function syncProfilePictureOnScroll() {
   const rect = aboutSec.getBoundingClientRect();
   const isOnAbout = rect.top < window.innerHeight * 0.6 && rect.bottom > window.innerHeight * 0.4;
   const isScrolled = window.scrollY > SCROLL_THRESHOLD_PX;
+  const isHome = !isOnAbout && !isScrolled;
 
   moveProfilePictureToAbout(isOnAbout);
+  profilePicture.classList.toggle("is-home", isHome);
   profilePicture.classList.toggle("on-about", isOnAbout);
   profilePicture.classList.toggle("is-scrolled", !isOnAbout && isScrolled);
   aboutSec.classList.toggle("on-about", isOnAbout);

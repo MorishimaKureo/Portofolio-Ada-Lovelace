@@ -107,7 +107,8 @@ body {
     bottom 1s ease,
     left 1s ease,
     position 1s ease,
-    transform 1s ease;
+    transform 1s ease,
+    opacity 0.45s ease;
 }
 
 .profile-picture img {
@@ -133,6 +134,10 @@ body {
   transition: font-size 1s ease;
 }
 
+.profile-picture.is-home{
+  animation: profileFadeToHome 0.55s ease both;
+}
+
 .profile-picture.is-scrolled{
   position: fixed;
   padding-top: 0px;
@@ -150,14 +155,16 @@ body {
 
   text-align: right;
   z-index: 1000;
+  animation: profileFadeToScrolled 0.55s ease both;
 }
 
 .profile-picture.on-about{
   position: static;
   padding-top: 0;
   transform: none;
+  animation: profileFadeToAbout 0.55s ease both;
   display: block;
-  flex: 0 0 220px;
+  flex: 0 0 240px;
   text-align: center;
   z-index: auto;
 }
@@ -198,16 +205,19 @@ body {
 }
 
 .about.on-about{
-  margin-top: 10px;
+  margin-top: 200px;
   filter:blur(0px);
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 32px;
   padding: 0 32px;
+  animation: aboutFadeIn 0.55s ease both;
 }
 
 .about.on-about p{
+  flex: 1;
   margin-left: 0;
   max-width: 720px;
 }
@@ -243,4 +253,50 @@ footer {
 footer a {
   color: var(--sidebar-accent);
   text-decoration: none;
+}
+
+@keyframes profileFadeToHome {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -24px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+@keyframes profileFadeToScrolled {
+  from {
+    opacity: 0;
+    transform: translateY(-18px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes profileFadeToAbout {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aboutFadeIn {
+  from {
+    opacity: 0.35;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
