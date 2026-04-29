@@ -139,7 +139,7 @@ body {
 }
 
 .profile-picture.is-home{
-  animation: profileFadeToHome 0.55s ease both;
+  animation: profileFadeToHome 1.2s ease both;
 }
 
 .profile-picture.is-scrolled{
@@ -159,14 +159,14 @@ body {
 
   text-align: right;
   z-index: 1000;
-  animation: profileFadeToScrolled 0.55s ease both;
+  animation: profileFadeToScrolled 1.2s ease both;
 }
 
 .profile-picture.on-about{
   position: static;
   padding-top: 0;
   transform: none;
-  animation: profileFadeToAbout 0.55s ease both;
+  animation: profileFadeToAbout 1.2s ease both;
   display: block;
   flex: 0 0 240px;
   text-align: center;
@@ -183,7 +183,7 @@ body {
 }
 
 .profile-picture.on-about a{
-  font-size: 30px;
+  font-size: 50px;
   font-family:"Dancing Script", cursive;
   display: block;
   transition: font-size 1s ease;
@@ -217,7 +217,7 @@ body {
   justify-content: center;
   gap: 32px;
   padding: 0 32px;
-  animation: aboutFadeIn 0.55s ease both;
+  animation: aboutFadeIn 1.2s ease both;
 }
 
 .about.on-about p{
@@ -241,6 +241,123 @@ body {
   font-size: 1.7rem;
 }
 
+.bio{
+  background-color: lightgrey;
+  min-height: 1000px;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.7rem;
+  gap: 10px;
+  font-family: "Elms Sans", cursive;
+}
+
+.bio h2{
+  font-size: 2rem;
+  margin-bottom: 100px;
+  text-align: center;
+  font-family: "Poppins", cursive;
+}
+
+.basic,
+.parents,
+.siblings {
+  width: min(600px);
+  opacity: 0;
+  transform: translateY(-24px) scale(0.96);
+  transition:
+    opacity 1.2s ease,
+    transform 1.8s ease;
+}
+
+.basic, .siblings{
+  padding-left: 50px;
+  align-self: flex-start;
+}
+
+.parents {
+  padding-right: 50px;
+  align-self: flex-end;
+}
+
+.parents a{
+  text-decoration: none;
+}
+
+.basic,
+.parents,
+.siblings {
+  will-change: opacity, transform;
+}
+
+.basic.is-visible,
+.parents.is-visible,
+.siblings.is-visible{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.bio ul{
+  border: 0;
+  border-radius: 10px;
+  margin: 0;
+  padding: 50px;
+  background-color: white;
+  width: 100%;
+}
+
+.life{
+  min-height: 800px;
+  padding: 64px 48px;
+  display: grid;
+  grid-template-columns: minmax(280px, 600px) minmax(280px, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.life h2{
+  grid-column: 1 / -1;
+  font-size: 2rem;
+  text-align: center;
+  margin: 0;
+}
+
+.text-box{
+  width: min(600px, 100%);
+  justify-self: center;
+  left: 300px;
+}
+
+.text-box p{
+  margin: 0;
+  padding: 10px;
+  left: 200px;
+  border-radius: 10px;
+  height: 350px;
+  background-color: white;
+  font-size: 1.6rem;
+  line-height: 1.7;
+}
+
+.photos{
+  justify-self: center;
+}
+
+.photos table{
+  border-collapse: collapse;
+}
+.photos td {
+  text-align: center;
+}
+
+.photos img{
+  display: block;
+  width: min(350px, 100%);
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
 @media (max-width: 760px) {
   .about.on-about {
     flex-direction: column;
@@ -249,6 +366,29 @@ body {
 
   .profile-picture.on-about {
     flex-basis: auto;
+  }
+
+  .bio {
+    padding: 48px 18px;
+  }
+
+  .basic,
+  .parents,
+  .siblings {
+    align-self: center;
+  }
+
+  .life {
+    grid-template-columns: 1fr;
+    padding: 48px 18px;
+  }
+
+  .photos {
+    justify-self: stretch;
+  }
+
+  .photos img {
+    width: 100%;
   }
 }
 
@@ -262,6 +402,18 @@ footer {
 footer a {
   color: var(--sidebar-accent);
   text-decoration: none;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(-24px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes profileFadeToHome {
